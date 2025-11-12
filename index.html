@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Programação de Jogos - Times ACF Sports/Dudu/Vila Mercado</title>
     <style>
+      /* Estilos Existentes (Mantidos) */
       * {
         margin: 0;
         padding: 0;
@@ -57,7 +58,11 @@
         color: #fd7e14 !important;
       }
       
-      /* Desktop view */
+      .team-dudu {
+        color: #007bff !important; /* Adicionado cor para Dudu */
+      }
+      
+      /* Estilos para Tabela (Desktop) */
       @media (min-width: 769px) {
         body {
           margin: 20px;
@@ -106,7 +111,7 @@
         }
       }
       
-      /* Mobile view */
+      /* Estilos para Cartões (Mobile) */
       @media (max-width: 768px) {
         table {
           display: none;
@@ -190,6 +195,63 @@
           margin-right: 5px;
         }
       }
+
+      /* NOVOS ESTILOS PARA ABAS (TABS) */
+      .tab-container {
+        max-width: 1000px;
+        margin: 0 auto 20px;
+      }
+
+      .tab-buttons {
+        display: flex;
+        flex-wrap: wrap; /* Permite que as abas quebrem a linha em telas menores */
+        border-bottom: 2px solid #ccc;
+        margin-bottom: 15px;
+      }
+
+      .tab-button {
+        background-color: #e9ecef;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        border-radius: 8px 8px 0 0;
+        margin-right: 5px;
+        margin-bottom: -2px; /* Ajuste para sobrepor a borda */
+        color: #6c757d;
+      }
+
+      .tab-button:hover {
+        background-color: #dee2e6;
+      }
+
+      .tab-button.active {
+        background-color: #ffffff;
+        border: 2px solid #ccc;
+        border-bottom: 2px solid #ffffff; /* Esconde a linha de baixo */
+        color: #0056b3;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+      
+      /* Classes para filtrar os jogos de cada time */
+      .game-acf-salim {
+        border-left: 5px solid #28a745;
+      }
+      .game-vila-mercado {
+        border-left: 5px solid #fd7e14;
+      }
+      .game-dudu {
+        border-left: 5px solid #007bff;
+      }
     </style>
   </head>
   <body>
@@ -199,446 +261,545 @@
       e **DUDU CENTRO AUT./ACF SPORTS**, organizados por data.
     </p>
 
-    <div class="section">
-      <h2>Sexta-feira, 14 de Novembro de 2025</h2>
-      
-      <!-- Desktop Table -->
-      <table>
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Modalidade</th>
-            <th>Grupo</th>
-            <th>Equipe A</th>
-            <th>X</th>
-            <th>Equipe B</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>20:00</td>
-            <td>FUTSAL MASC.</td>
-            <td>A</td>
-            <td>JD PROGRESSO S.C.</td>
-            <td>X</td>
-            <td class="team-acf-salim">ACF SPORTS/ EXP. SALIM</td>
-            <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <!-- Mobile Card -->
-      <div class="mobile-card">
-        <div class="card-time">⏰ 20:00</div>
-        <div>
-          <span class="card-type">Futsal Masc.</span>
-          <span class="card-group">Grupo A</span>
+    <div class="tab-container">
+      <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab('all')">Todos os Jogos</button>
+        <button class="tab-button" onclick="openTab('acf-salim')">ACF Sports/Salim</button>
+        <button class="tab-button" onclick="openTab('vila-mercado')">Vila Mercado</button>
+        <button class="tab-button" onclick="openTab('dudu')">Dudu Centro Aut.</button>
+      </div>
+
+      <div id="all" class="tab-content active">
+        <div class="section game-acf-salim">
+          <h2>Sexta-feira, 14 de Novembro de 2025</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Modalidade</th>
+                <th>Grupo</th>
+                <th>Equipe A</th>
+                <th>X</th>
+                <th>Equipe B</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="game-item acf-salim">
+                <td>20:00</td>
+                <td>FUTSAL MASC.</td>
+                <td>A</td>
+                <td>JD PROGRESSO S.C.</td>
+                <td>X</td>
+                <td class="team-acf-salim">ACF SPORTS/ EXP. SALIM</td>
+                <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mobile-card game-item acf-salim">
+            <div class="card-time">⏰ 20:00</div>
+            <div>
+              <span class="card-type">Futsal Masc.</span>
+              <span class="card-group">Grupo A</span>
+            </div>
+            <div class="card-match">
+              <div class="team">JD PROGRESSO S.C.</div>
+              <div class="vs">X</div>
+              <div class="team team-acf-salim">ACF SPORTS/ EXP. SALIM</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
+            </div>
+          </div>
         </div>
-        <div class="card-match">
-          <div class="team">JD PROGRESSO S.C.</div>
-          <div class="vs">X</div>
-          <div class="team team-acf-salim">ACF SPORTS/ EXP. SALIM</div>
+
+        <div class="section game-acf-salim game-vila-mercado">
+          <h2>Segunda-feira, 17 de Novembro de 2025</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Modalidade</th>
+                <th>Grupo</th>
+                <th>Equipe A</th>
+                <th>X</th>
+                <th>Equipe B</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="game-item acf-salim vila-mercado">
+                <td>21:00</td>
+                <td>FUTSAL MASC.</td>
+                <td>A</td>
+                <td class="team-acf-salim">ACF SPORTS/EXP. SALIM</td>
+                <td>X</td>
+                <td class="team-vila-mercado">VILA MERCADO / ACF SPORTS</td>
+                <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mobile-card game-item acf-salim vila-mercado">
+            <div class="card-time">⏰ 21:00</div>
+            <div>
+              <span class="card-type">Futsal Masc.</span>
+              <span class="card-group">Grupo A</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-acf-salim">ACF SPORTS/EXP. SALIM</div>
+              <div class="vs">X</div>
+              <div class="team team-vila-mercado">VILA MERCADO / ACF SPORTS</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
+            </div>
+          </div>
         </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
+
+        <div class="section game-dudu game-acf-salim">
+          <h2>Terça-feira, 18 de Novembro de 2025</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Modalidade</th>
+                <th>Grupo</th>
+                <th>Equipe A</th>
+                <th>X</th>
+                <th>Equipe B</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="game-item dudu">
+                <td>19:30</td>
+                <td>FUTSAL MASC.</td>
+                <td>B</td>
+                <td>BELA VISTA F.C.</td>
+                <td>X</td>
+                <td class="team-dudu">DUDU CENTRO AUT./ACF SPORTS</td>
+                <td>Ginásio Pedro Mariucci</td>
+              </tr>
+              <tr class="game-item acf-salim">
+                <td>20:30</td>
+                <td>FUTSAL MASC.</td>
+                <td>A</td>
+                <td>OFICINA DAS MÁQUINAS</td>
+                <td>X</td>
+                <td class="team-acf-salim">ACF SPORTS/EXP. SALIM</td>
+                <td>Ginásio Pedro Mariucci</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mobile-card game-item dudu">
+            <div class="card-time">⏰ 19:30</div>
+            <div>
+              <span class="card-type">Futsal Masc.</span>
+              <span class="card-group">Grupo B</span>
+            </div>
+            <div class="card-match">
+              <div class="team">BELA VISTA F.C.</div>
+              <div class="vs">X</div>
+              <div class="team team-dudu">DUDU CENTRO AUT./ACF SPORTS</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Ginásio Pedro Mariucci
+            </div>
+          </div>
+          <div class="mobile-card game-item acf-salim">
+            <div class="card-time">⏰ 20:30</div>
+            <div>
+              <span class="card-type">Futsal Masc.</span>
+              <span class="card-group">Grupo A</span>
+            </div>
+            <div class="card-match">
+              <div class="team">OFICINA DAS MÁQUINAS</div>
+              <div class="vs">X</div>
+              <div class="team team-acf-salim">ACF SPORTS/EXP. SALIM</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Ginásio Pedro Mariucci
+            </div>
+          </div>
+        </div>
+
+        <div class="section game-vila-mercado">
+          <h2>Quarta-feira, 19 de Novembro de 2025</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Modalidade</th>
+                <th>Grupo</th>
+                <th>Equipe A</th>
+                <th>X</th>
+                <th>Equipe B</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="game-item vila-mercado">
+                <td>21:00</td>
+                <td>FUTSAL MASC.</td>
+                <td>A</td>
+                <td class="team-vila-mercado">VILA MERCADO / ACF SPORTS</td>
+                <td>X</td>
+                <td>OFICINA DAS MÁQUINAS</td>
+                <td>Ginásio Pedro Mariucci</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mobile-card game-item vila-mercado">
+            <div class="card-time">⏰ 21:00</div>
+            <div>
+              <span class="card-type">Futsal Masc.</span>
+              <span class="card-group">Grupo A</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-vila-mercado">VILA MERCADO / ACF SPORTS</div>
+              <div class="vs">X</div>
+              <div class="team">OFICINA DAS MÁQUINAS</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Ginásio Pedro Mariucci
+            </div>
+          </div>
+        </div>
+
+        <div class="section game-dudu">
+          <h2>Quinta-feira, 20 de Novembro de 2025</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Modalidade</th>
+                <th>Grupo</th>
+                <th>Equipe A</th>
+                <th>X</th>
+                <th>Equipe B</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="game-item dudu">
+                <td>19:15</td>
+                <td>FUTSAL MASC.</td>
+                <td>B</td>
+                <td class="team-dudu">DUDU CTRO AUT./ACF SPORTS</td>
+                <td>X</td>
+                <td>DM TECH</td>
+                <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mobile-card game-item dudu">
+            <div class="card-time">⏰ 19:15</div>
+            <div>
+              <span class="card-type">Futsal Masc.</span>
+              <span class="card-group">Grupo B</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-dudu">DUDU CTRO AUT./ACF SPORTS</div>
+              <div class="vs">X</div>
+              <div class="team">DM TECH</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
+            </div>
+          </div>
+        </div>
+
+        <div class="section game-vila-mercado game-dudu">
+          <h2>Sexta-feira, 21 de Novembro de 2025</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Modalidade</th>
+                <th>Grupo</th>
+                <th>Equipe A</th>
+                <th>X</th>
+                <th>Equipe B</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="game-item vila-mercado">
+                <td>20:00</td>
+                <td>FUTSAL MASC.</td>
+                <td>A</td>
+                <td class="team-vila-mercado">VILA MERCADO / ACF ESPORTS</td>
+                <td>X</td>
+                <td>JARDIM PROGRESSO S.C.</td>
+                <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
+              </tr>
+              <tr class="game-item dudu">
+                <td>20:00</td>
+                <td>FUTEBOL SETE</td>
+                <td>B</td>
+                <td class="team-dudu">DUDU CTRO AUT./ACF SPORTS</td>
+                <td>X</td>
+                <td>MENINOS DO TRAMPO</td>
+                <td>Campo do Colégio Militar</td>
+              </tr>
+              <tr class="game-item vila-mercado">
+                <td>20:30</td>
+                <td>FUTEBOL SETE</td>
+                <td>B</td>
+                <td>CASCAVEL JUNIOR</td>
+                <td>X</td>
+                <td class="team-vila-mercado">VILA MERCADO/ ACF SPORTS</td>
+                <td>Campo do Colégio Militar</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mobile-card game-item vila-mercado">
+            <div class="card-time">⏰ 20:00</div>
+            <div>
+              <span class="card-type">Futsal Masc.</span>
+              <span class="card-group">Grupo A</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-vila-mercado">VILA MERCADO / ACF ESPORTS</div>
+              <div class="vs">X</div>
+              <div class="team">JARDIM PROGRESSO S.C.</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
+            </div>
+          </div>
+          <div class="mobile-card game-item dudu">
+            <div class="card-time">⏰ 20:00</div>
+            <div>
+              <span class="card-type">Futebol Sete</span>
+              <span class="card-group">Grupo B</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-dudu">DUDU CTRO AUT./ACF SPORTS</div>
+              <div class="vs">X</div>
+              <div class="team">MENINOS DO TRAMPO</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Campo do Colégio Militar
+            </div>
+          </div>
+          <div class="mobile-card game-item vila-mercado">
+            <div class="card-time">⏰ 20:30</div>
+            <div>
+              <span class="card-type">Futebol Sete</span>
+              <span class="card-group">Grupo B</span>
+            </div>
+            <div class="card-match">
+              <div class="team">CASCAVEL JUNIOR</div>
+              <div class="vs">X</div>
+              <div class="team team-vila-mercado">VILA MERCADO/ ACF SPORTS</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Campo do Colégio Militar
+            </div>
+          </div>
+        </div>
+
+        <div class="section game-dudu game-vila-mercado">
+          <h2>Sábado, 22 de Novembro de 2025</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Horário</th>
+                <th>Modalidade</th>
+                <th>Grupo</th>
+                <th>Equipe A</th>
+                <th>X</th>
+                <th>Equipe B</th>
+                <th>Local</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="game-item dudu vila-mercado">
+                <td>13:30</td>
+                <td>FUTEBOL SETE</td>
+                <td>B</td>
+                <td class="team-dudu">DUDU CTRO AUT./ACF SPORTS</td>
+                <td>X</td>
+                <td class="team-vila-mercado">VILA MERCADO/ ACF SPORTS</td>
+                <td>Campo do Colégio Militar</td>
+              </tr>
+              <tr class="game-item dudu">
+                <td>15:45</td>
+                <td>FUTEBOL SETE</td>
+                <td>B</td>
+                <td class="team-dudu">DUDU CTRO AUT./ACF SPORTS</td>
+                <td>X</td>
+                <td>CASCAVEL JUNIOR</td>
+                <td>Campo do Colégio Militar</td>
+              </tr>
+              <tr class="game-item vila-mercado">
+                <td>16:15</td>
+                <td>FUTEBOL SETE</td>
+                <td>B</td>
+                <td class="team-vila-mercado">VILA MERCADO/ ACF SPORTS</td>
+                <td>X</td>
+                <td>MENINOS DO TRAMPO</td>
+                <td>Campo do Colégio Militar</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="mobile-card game-item dudu vila-mercado">
+            <div class="card-time">⏰ 13:30</div>
+            <div>
+              <span class="card-type">Futebol Sete</span>
+              <span class="card-group">Grupo B</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-dudu">DUDU CTRO AUT./ACF SPORTS</div>
+              <div class="vs">X</div>
+              <div class="team team-vila-mercado">VILA MERCADO/ ACF SPORTS</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Campo do Colégio Militar
+            </div>
+          </div>
+          <div class="mobile-card game-item dudu">
+            <div class="card-time">⏰ 15:45</div>
+            <div>
+              <span class="card-type">Futebol Sete</span>
+              <span class="card-group">Grupo B</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-dudu">DUDU CTRO AUT./ACF SPORTS</div>
+              <div class="vs">X</div>
+              <div class="team">CASCAVEL JUNIOR</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Campo do Colégio Militar
+            </div>
+          </div>
+          <div class="mobile-card game-item vila-mercado">
+            <div class="card-time">⏰ 16:15</div>
+            <div>
+              <span class="card-type">Futebol Sete</span>
+              <span class="card-group">Grupo B</span>
+            </div>
+            <div class="card-match">
+              <div class="team team-vila-mercado">VILA MERCADO/ ACF SPORTS</div>
+              <div class="vs">X</div>
+              <div class="team">MENINOS DO TRAMPO</div>
+            </div>
+            <div class="card-location">
+              <span class="location-icon">📍</span>Campo do Colégio Militar
+            </div>
+          </div>
         </div>
       </div>
+
+      <div id="acf-salim" class="tab-content">
+        </div>
+      
+      <div id="vila-mercado" class="tab-content">
+        </div>
+      
+      <div id="dudu" class="tab-content">
+        </div>
+
     </div>
 
-    <div class="section">
-      <h2>Segunda-feira, 17 de Novembro de 2025</h2>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Modalidade</th>
-            <th>Grupo</th>
-            <th>Equipe A</th>
-            <th>X</th>
-            <th>Equipe B</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>21:00</td>
-            <td>FUTSAL MASC.</td>
-            <td>A</td>
-            <td class="team-acf-salim">ACF SPORTS/EXP. SALIM</td>
-            <td>X</td>
-            <td class="team-vila-mercado">VILA MERCADO / ACF SPORTS</td>
-            <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 21:00</div>
-        <div>
-          <span class="card-type">Futsal Masc.</span>
-          <span class="card-group">Grupo A</span>
-        </div>
-        <div class="card-match">
-          <div class="team team-acf-salim">ACF SPORTS/EXP. SALIM</div>
-          <div class="vs">X</div>
-          <div class="team team-vila-mercado">VILA MERCADO / ACF SPORTS</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
-        </div>
-      </div>
-    </div>
+    <script>
+      function openTab(teamId) {
+        // 1. Esconder todos os conteúdos de aba
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+          tabContents[i].classList.remove("active");
+          tabContents[i].innerHTML = ""; // Limpa o conteúdo (exceto "all")
+        }
 
-    <div class="section">
-      <h2>Terça-feira, 18 de Novembro de 2025</h2>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Modalidade</th>
-            <th>Grupo</th>
-            <th>Equipe A</th>
-            <th>X</th>
-            <th>Equipe B</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>19:30</td>
-            <td>FUTSAL MASC.</td>
-            <td>B</td>
-            <td>BELA VISTA F.C.</td>
-            <td>X</td>
-            <td>DUDU CENTRO AUT./ACF SPORTS</td>
-            <td>Ginásio Pedro Mariucci</td>
-          </tr>
-          <tr>
-            <td>20:30</td>
-            <td>FUTSAL MASC.</td>
-            <td>A</td>
-            <td>OFICINA DAS MÁQUINAS</td>
-            <td>X</td>
-            <td class="team-acf-salim">ACF SPORTS/EXP. SALIM</td>
-            <td>Ginásio Pedro Mariucci</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 19:30</div>
-        <div>
-          <span class="card-type">Futsal Masc.</span>
-          <span class="card-group">Grupo B</span>
-        </div>
-        <div class="card-match">
-          <div class="team">BELA VISTA F.C.</div>
-          <div class="vs">X</div>
-          <div class="team">DUDU CENTRO AUT./ACF SPORTS</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Ginásio Pedro Mariucci
-        </div>
-      </div>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 20:30</div>
-        <div>
-          <span class="card-type">Futsal Masc.</span>
-          <span class="card-group">Grupo A</span>
-        </div>
-        <div class="card-match">
-          <div class="team">OFICINA DAS MÁQUINAS</div>
-          <div class="vs">X</div>
-          <div class="team team-acf-salim">ACF SPORTS/EXP. SALIM</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Ginásio Pedro Mariucci
-        </div>
-      </div>
-    </div>
+        // 2. Desativar todos os botões
+        var tabButtons = document.getElementsByClassName("tab-button");
+        for (var i = 0; i < tabButtons.length; i++) {
+          tabButtons[i].classList.remove("active");
+        }
 
-    <div class="section">
-      <h2>Quarta-feira, 19 de Novembro de 2025</h2>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Modalidade</th>
-            <th>Grupo</th>
-            <th>Equipe A</th>
-            <th>X</th>
-            <th>Equipe B</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>21:00</td>
-            <td>FUTSAL MASC.</td>
-            <td>A</td>
-            <td class="team-vila-mercado">VILA MERCADO / ACF SPORTS</td>
-            <td>X</td>
-            <td>OFICINA DAS MÁQUINAS</td>
-            <td>Ginásio Pedro Mariucci</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 21:00</div>
-        <div>
-          <span class="card-type">Futsal Masc.</span>
-          <span class="card-group">Grupo A</span>
-        </div>
-        <div class="card-match">
-          <div class="team team-vila-mercado">VILA MERCADO / ACF SPORTS</div>
-          <div class="vs">X</div>
-          <div class="team">OFICINA DAS MÁQUINAS</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Ginásio Pedro Mariucci
-        </div>
-      </div>
-    </div>
+        // 3. Mostrar o conteúdo da aba selecionada
+        var selectedTab = document.getElementById(teamId);
+        selectedTab.classList.add("active");
+        
+        // 4. Ativar o botão clicado
+        event.currentTarget.classList.add("active");
 
-    <div class="section">
-      <h2>Quinta-feira, 20 de Novembro de 2025</h2>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Modalidade</th>
-            <th>Grupo</th>
-            <th>Equipe A</th>
-            <th>X</th>
-            <th>Equipe B</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>19:15</td>
-            <td>FUTSAL MASC.</td>
-            <td>B</td>
-            <td>DUDU CTRO AUT./ACF SPORTS</td>
-            <td>X</td>
-            <td>DM TECH</td>
-            <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 19:15</div>
-        <div>
-          <span class="card-type">Futsal Masc.</span>
-          <span class="card-group">Grupo B</span>
-        </div>
-        <div class="card-match">
-          <div class="team">DUDU CTRO AUT./ACF SPORTS</div>
-          <div class="vs">X</div>
-          <div class="team">DM TECH</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
-        </div>
-      </div>
-    </div>
+        // 5. Preencher as abas específicas do time
+        if (teamId !== 'all') {
+            // Se não for a aba "Todos os Jogos", filtramos
+            var allGames = document.getElementById('all').cloneNode(true);
+            var gamesToDisplay = allGames.querySelectorAll('.game-item.' + teamId);
+            
+            // Reúne os jogos e os agrupa nas suas respectivas seções
+            var sectionsMap = {};
+            
+            // Encontra e clona as seções de data (h2 e o elemento .section)
+            document.querySelectorAll('.section').forEach(section => {
+                const sectionClone = section.cloneNode(false); // Clone apenas a div .section
+                const h2Clone = section.querySelector('h2').cloneNode(true); // Clone o H2
+                sectionClone.appendChild(h2Clone);
+                sectionsMap[h2Clone.textContent] = sectionClone;
+            });
+            
+            let gamesFound = false;
 
-    <div class="section">
-      <h2>Sexta-feira, 21 de Novembro de 2025</h2>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Modalidade</th>
-            <th>Grupo</th>
-            <th>Equipe A</th>
-            <th>X</th>
-            <th>Equipe B</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>20:00</td>
-            <td>FUTSAL MASC.</td>
-            <td>A</td>
-            <td class="team-vila-mercado">VILA MERCADO / ACF ESPORTS</td>
-            <td>X</td>
-            <td>JARDIM PROGRESSO S.C.</td>
-            <td>Ginásio João Batista Paiva Gatti "Gattinho"</td>
-          </tr>
-          <tr>
-            <td>20:00</td>
-            <td>FUTEBOL SETE</td>
-            <td>B</td>
-            <td>DUDU CTRO AUT./ACF SPORTS</td>
-            <td>X</td>
-            <td>MENINOS DO TRAMPO</td>
-            <td>Campo do Colégio Militar</td>
-          </tr>
-          <tr>
-            <td>20:30</td>
-            <td>FUTEBOL SETE</td>
-            <td>B</td>
-            <td>CASCAVEL JUNIOR</td>
-            <td>X</td>
-            <td class="team-vila-mercado">VILA MERCADO/ ACF SPORTS</td>
-            <td>Campo do Colégio Militar</td>
-          </tr>
-        </tbody>
-      </table>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 20:00</div>
-        <div>
-          <span class="card-type">Futsal Masc.</span>
-          <span class="card-group">Grupo A</span>
-        </div>
-        <div class="card-match">
-          <div class="team team-vila-mercado">VILA MERCADO / ACF ESPORTS</div>
-          <div class="vs">X</div>
-          <div class="team">JARDIM PROGRESSO S.C.</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Ginásio João Batista Paiva Gatti "Gattinho"
-        </div>
-      </div>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 20:00</div>
-        <div>
-          <span class="card-type">Futebol Sete</span>
-          <span class="card-group">Grupo B</span>
-        </div>
-        <div class="card-match">
-          <div class="team">DUDU CTRO AUT./ACF SPORTS</div>
-          <div class="vs">X</div>
-          <div class="team">MENINOS DO TRAMPO</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Campo do Colégio Militar
-        </div>
-      </div>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 20:30</div>
-        <div>
-          <span class="card-type">Futebol Sete</span>
-          <span class="card-group">Grupo B</span>
-        </div>
-        <div class="card-match">
-          <div class="team">CASCAVEL JUNIOR</div>
-          <div class="vs">X</div>
-          <div class="team team-vila-mercado">VILA MERCADO/ ACF SPORTS</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Campo do Colégio Militar
-        </div>
-      </div>
-    </div>
+            // Itera sobre os jogos filtrados (game-item)
+            gamesToDisplay.forEach(gameItem => {
+                gamesFound = true;
+                
+                // Encontra a seção pai original (para pegar o H2 da data)
+                let parentSection = gameItem.closest('.section');
+                let h2Text = parentSection.querySelector('h2').textContent;
+                
+                // Pega a seção clonada correta no mapa
+                let targetSection = sectionsMap[h2Text];
+                
+                // Verifica se o jogo é uma linha de tabela (desktop) ou um card (mobile)
+                if (gameItem.tagName === 'TR') {
+                    // Se for uma linha de tabela, precisamos criar a estrutura completa da tabela
+                    let table = targetSection.querySelector('table');
+                    if (!table) {
+                        // Se a tabela não existir, cria-a e adiciona o cabeçalho
+                        table = document.createElement('table');
+                        table.innerHTML = `<thead>
+                                <tr>
+                                    <th>Horário</th>
+                                    <th>Modalidade</th>
+                                    <th>Grupo</th>
+                                    <th>Equipe A</th>
+                                    <th>X</th>
+                                    <th>Equipe B</th>
+                                    <th>Local</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>`;
+                        targetSection.appendChild(table);
+                    }
+                    table.querySelector('tbody').appendChild(gameItem);
+                } else if (gameItem.classList.contains('mobile-card')) {
+                    // Se for um card, basta adicionar o clone diretamente
+                    targetSection.appendChild(gameItem);
+                }
+            });
 
-    <div class="section">
-      <h2>Sábado, 22 de Novembro de 2025</h2>
+            // Adiciona as seções preenchidas (que contém jogos do time) à aba selecionada
+            if (gamesFound) {
+                Object.values(sectionsMap).forEach(section => {
+                    // Adiciona a seção ao DOM apenas se ela tiver conteúdo (além do H2)
+                    if (section.children.length > 1) {
+                        selectedTab.appendChild(section);
+                    }
+                });
+            } else {
+                selectedTab.innerHTML = '<p style="text-align: center; margin-top: 20px;">Nenhum jogo programado para este time neste período.</p>';
+            }
+        }
+      }
       
-      <table>
-        <thead>
-          <tr>
-            <th>Horário</th>
-            <th>Modalidade</th>
-            <th>Grupo</th>
-            <th>Equipe A</th>
-            <th>X</th>
-            <th>Equipe B</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>13:30</td>
-            <td>FUTEBOL SETE</td>
-            <td>B</td>
-            <td>DUDU CTRO AUT./ACF SPORTS</td>
-            <td>X</td>
-            <td class="team-vila-mercado">VILA MERCADO/ ACF SPORTS</td>
-            <td>Campo do Colégio Militar</td>
-          </tr>
-          <tr>
-            <td>15:45</td>
-            <td>FUTEBOL SETE</td>
-            <td>B</td>
-            <td>DUDU CTRO AUT./ACF SPORTS</td>
-            <td>X</td>
-            <td>CASCAVEL JUNIOR</td>
-            <td>Campo do Colégio Militar</td>
-          </tr>
-          <tr>
-            <td>16:15</td>
-            <td>FUTEBOL SETE</td>
-            <td>B</td>
-            <td class="team-vila-mercado">VILA MERCADO/ ACF SPORTS</td>
-            <td>X</td>
-            <td>MENINOS DO TRAMPO</td>
-            <td>Campo do Colégio Militar</td>
-          </tr>
-        </tbody>
-      </table>
+      // Funções auxiliares para reestruturar as tabelas (apenas para desktop)
+      // A função openTab() fará o trabalho principal de filtragem.
       
-      <div class="mobile-card">
-        <div class="card-time">⏰ 13:30</div>
-        <div>
-          <span class="card-type">Futebol Sete</span>
-          <span class="card-group">Grupo B</span>
-        </div>
-        <div class="card-match">
-          <div class="team">DUDU CTRO AUT./ACF SPORTS</div>
-          <div class="vs">X</div>
-          <div class="team team-vila-mercado">VILA MERCADO/ ACF SPORTS</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Campo do Colégio Militar
-        </div>
-      </div>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 15:45</div>
-        <div>
-          <span class="card-type">Futebol Sete</span>
-          <span class="card-group">Grupo B</span>
-        </div>
-        <div class="card-match">
-          <div class="team">DUDU CTRO AUT./ACF SPORTS</div>
-          <div class="vs">X</div>
-          <div class="team">CASCAVEL JUNIOR</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Campo do Colégio Militar
-        </div>
-      </div>
-      
-      <div class="mobile-card">
-        <div class="card-time">⏰ 16:15</div>
-        <div>
-          <span class="card-type">Futebol Sete</span>
-          <span class="card-group">Grupo B</span>
-        </div>
-        <div class="card-match">
-          <div class="team team-vila-mercado">VILA MERCADO/ ACF SPORTS</div>
-          <div class="vs">X</div>
-          <div class="team">MENINOS DO TRAMPO</div>
-        </div>
-        <div class="card-location">
-          <span class="location-icon">📍</span>Campo do Colégio Militar
-        </div>
-      </div>
-    </div>
+    </script>
   </body>
 </html>
